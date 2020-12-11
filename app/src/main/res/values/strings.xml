@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AppDeTragos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textViewTragos">Fragment lista de tragos</string>
+    <string name="textViewDetalles">Detalles tragos</string>
+    <string name="ButtonDetail">Ir a detaller</string>
+</resources>

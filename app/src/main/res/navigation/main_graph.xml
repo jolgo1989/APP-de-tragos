@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.appdetragos.ui.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        android:label="Tragos"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_tragosDetallerFragment"
             app:destination="@id/tragosDetallerFragment" />
@@ -17,8 +17,8 @@
     <fragment
         android:id="@+id/tragosDetallerFragment"
         android:name="com.example.appdetragos.ui.TragosDetallerFragment"
-        android:label="fragment_tragos_detaller"
-        tools:layout="@layout/fragment_tragos_detaller" >
+        android:label="Detalles"
+        tools:layout="@layout/fragment_tragos_detaller">
         <action
             android:id="@+id/action_tragosDetallerFragment_to_mainFragment"
             app:destination="@id/mainFragment" />

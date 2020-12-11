@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Metodo para agregar el Up button
         navController = this.findNavController(R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
     }
@@ -25,10 +26,3 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp()
     }
 }
-
-/*
-//Metodo para agregar el Up button
-val navController = this.findNavController(R.id.nav_host_fragment)
-NavigationUI.setupActionBarWithNavController(this,navController,upButton)
-
- */

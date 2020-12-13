@@ -5,6 +5,7 @@ import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -13,8 +14,13 @@ import com.example.appdetragos.base.BaseViewHolder
 import com.example.appdetragos.data.Drink
 import kotlinx.android.synthetic.main.tragos_row.view.*
 
-class MainAdapter(private val context: Context, private val tragosList: List<Drink>) :
+class MainAdapter(private val context: Context, private val tragosList: List<Drink>,
+private val itemClickListener:OnTragoClickListener ) :
+
     RecyclerView.Adapter<BaseViewHolder<*>>() {
+    interface OnTragoClickListener{
+        fun onTragoClick(drink: Drink)
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return MainViewHolder(
             LayoutInflater.from(context).inflate(R.layout.tragos_row, parent, false)
@@ -34,6 +40,9 @@ class MainAdapter(private val context: Context, private val tragosList: List<Dri
             Glide.with(context).load(item.imgen).centerCrop().into(itemView.img_cocktail)
             itemView.txt_titulo.text = item.nombre
             itemView.txt_descripcion.text = item.descripcion
+            itemView.setOnClickListener {
+                itemClickListener.onTragoClick(item)
+            }
 
         }
 

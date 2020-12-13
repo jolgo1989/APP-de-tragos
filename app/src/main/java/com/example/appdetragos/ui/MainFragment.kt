@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.load.engine.Resource
 import com.example.appdetragos.R
 import com.example.appdetragos.data.DataSource
+import com.example.appdetragos.data.Drink
 import com.example.appdetragos.databinding.FragmentMainBinding
 import com.example.appdetragos.domain.RepoImpl
 import com.example.appdetragos.ui.viewmodel.MainAdapter
@@ -23,7 +24,7 @@ import com.example.appdetragos.ui.viewmodel.VMFactory
 import kotlinx.android.synthetic.main.fragment_main.*
 
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(),MainAdapter.OnTragoClickListener {
 
     private val viewModel by viewModels<MainViewModel> { VMFactory(RepoImpl(DataSource())) }
 
@@ -51,7 +52,7 @@ class MainFragment : Fragment() {
                 }
                 is com.example.appdetragos.vo.Resource.Success -> {
                     progressBar.visibility = View.GONE
-                    recyclerView.adapter = MainAdapter(requireContext(),result.data)
+                    recyclerView.adapter = MainAdapter(requireContext(),result.data,this)
                 }
                 is com.example.appdetragos.vo.Resource.Failure -> {
                     progressBar.visibility = View.GONE
@@ -72,5 +73,11 @@ class MainFragment : Fragment() {
                 DividerItemDecoration.VERTICAL
             )
         )
+    }
+
+    override fun onTragoClick(drink: Drink) {
+        val bundle = Bundle()
+        bundle.putParcelable("drink",drink)
+        findNavController().navigate(R.id.action_mainFragment_to_tragosDetallerFragment,bundle)
     }
 }

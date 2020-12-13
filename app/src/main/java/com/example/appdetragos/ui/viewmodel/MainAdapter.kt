@@ -30,7 +30,8 @@ class MainAdapter(private val context: Context, private val tragosList: List<Dri
     override fun getItemCount(): Int = tragosList.size
     inner class MainViewHolder(itemView: View) : BaseViewHolder<Drink>(itemView) {
         override fun bind(item: Drink) {
-            Glide.with(context).load(item.imgen).into(itemView.img_cocktail)
+            //centerCrop() metodo colocar mismo tamaño a todas las imagenes
+            Glide.with(context).load(item.imgen).centerCrop().into(itemView.img_cocktail)
             itemView.txt_titulo.text = item.nombre
             itemView.txt_descripcion.text = item.descripcion
 

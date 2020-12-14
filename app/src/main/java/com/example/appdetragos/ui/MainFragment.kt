@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.viewModels
@@ -43,6 +44,12 @@ class MainFragment : Fragment(),MainAdapter.OnTragoClickListener {
 
         binding = FragmentMainBinding.bind(view)
         setupReciclerView()
+        setupSearchView()
+        setupObservers()
+
+    }
+
+    private fun setupObservers(){
         viewModel.fetchTragosList.observe(viewLifecycleOwner, Observer { result ->
 
             when (result) {
@@ -73,6 +80,22 @@ class MainFragment : Fragment(),MainAdapter.OnTragoClickListener {
                 DividerItemDecoration.VERTICAL
             )
         )
+    }
+
+    //Metodo para hacer la busqueda de tragos
+    private fun setupSearchView(){
+
+        searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.setTragos(query!!)
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false
+            }
+
+        })
     }
 
     override fun onTragoClick(drink: Drink) {

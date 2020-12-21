@@ -9,4 +9,5 @@
     <string name="Titulo">Titulo</string>
     <string name="Description">Margarita con ingredientes : vodka, soda, limon</string>
     <string name="ImgRV">TODO</string>
+    <string name="Guardar">Guardar</string>
 </resources>
